@@ -952,7 +952,7 @@ static SyscallDesc syscallDescs64[] = {
     /*  290 */ SyscallDesc("unused#290", unimplementedFunc),
     /*  291 */ SyscallDesc("unused#291", unimplementedFunc),
     /*  292 */ SyscallDesc("unused#292", unimplementedFunc),
-    /*  293 */ SyscallDesc("unused#293", unimplementedFunc),
+    /*  293 */ SyscallDesc("unused#293", ignoreFunc),
     /*  294 */ SyscallDesc("unused#294", unimplementedFunc),
     /*  295 */ SyscallDesc("unused#295", unimplementedFunc),
     /*  296 */ SyscallDesc("unused#296", unimplementedFunc),
