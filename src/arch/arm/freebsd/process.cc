@@ -30,16 +30,13 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "arch/arm/freebsd/process.hh"
-
 #include <sys/mman.h>
 #include <sys/param.h>
 #include <sys/syscall.h>
-#include <sys/sysctl.h>
 #include <sys/types.h>
-#include <utime.h>
 
 #include "arch/arm/freebsd/freebsd.hh"
+#include "arch/arm/freebsd/process.hh"
 #include "arch/arm/isa_traits.hh"
 #include "base/trace.hh"
 #include "cpu/thread_context.hh"
@@ -60,6 +57,7 @@ issetugidFunc(SyscallDesc *desc, int callnum, Process *process,
     return 0;
 }
 
+#if !defined ( __GNU_LIBRARY__ )
 static SyscallReturn
 sysctlFunc(SyscallDesc *desc, int callnum, Process *process,
            ThreadContext *tc)
@@ -103,6 +101,7 @@ sysctlFunc(SyscallDesc *desc, int callnum, Process *process,
 
     return (ret);
 }
+#endif
 
 static SyscallDesc syscallDescs32[] = {
     /*    0 */ SyscallDesc("unused#000", unimplementedFunc),
@@ -858,7 +857,11 @@ static SyscallDesc syscallDescs64[] = {
     /*  199 */ SyscallDesc("unused#199", unimplementedFunc),
     /*  200 */ SyscallDesc("unused#200", unimplementedFunc),
     /*  201 */ SyscallDesc("unused#201", unimplementedFunc),
+#if !defined ( __GNU_LIBRARY__ )
     /*  202 */ SyscallDesc("sysctl", sysctlFunc),
+#else
+    /*  202 */ SyscallDesc("unused#202", unimplementedFunc),
+#endif
     /*  203 */ SyscallDesc("unused#203", unimplementedFunc),
     /*  204 */ SyscallDesc("unused#204", unimplementedFunc),
     /*  205 */ SyscallDesc("unused#205", unimplementedFunc),

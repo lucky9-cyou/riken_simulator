@@ -28,6 +28,25 @@ Conference on High Performance Computing in Asia-Paciﬁc Region,
 HPCAsia2020, pages 142–149, New York, NY, USA, 2020. Association for
 Computing Machinery.
 
+## Compile
+Install python 2.7 and scons using following commands:
+```bash
+conda create -n arm python=2.7
+conda activate arm
+pip install scons
+```
+
+Export LIBRARY_PATH and LD_LIBRARY_PATH to point to the python 2.7 library
+```bash
+export LIBRARY_PATH=/home/lucky/anaconda3/envs/arm/lib/
+export LD_LIBRARY_PATH=/home/lucky/anaconda3/envs/arm/lib/
+```
+
+Run Compile script
+```bash
+python2.7 `which scons` build/ARM/gem5.opt
+```
+
 ## Usage
 
 The RIKEN simulator runs only in the syscall-emulation mode.

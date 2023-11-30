@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include <cstdint>
+
 #include "cast.h"
 
 NAMESPACE_BEGIN(PYBIND11_NAMESPACE)
