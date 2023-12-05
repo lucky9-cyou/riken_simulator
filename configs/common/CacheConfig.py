@@ -85,7 +85,7 @@ def config_cache(options, system):
 
     # Set the cache line size of the system
     system.cache_line_size = options.cacheline_size
-    if (options.cacheline_size < 256)
+    if (options.cacheline_size < 256):
         fatal("Cache line size must be at least 256 bytes.")
     walk_cache_class.size = str(options.cacheline_size / 256) + 'kB'
 
