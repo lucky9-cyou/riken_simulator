@@ -210,6 +210,7 @@ def config_mem(options, system):
     # byte. This value is based on the locality seen across a large
     # range of workloads.
     intlv_size = max(128, system.cache_line_size.value)
+    # intlv_size = system.cache_line_size.value * opt_mem_channels
 
     # For every range (most systems will only have one), create an
     # array of controllers and set their parameters to match their
